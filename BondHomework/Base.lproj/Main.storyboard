@@ -171,7 +171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K5a-dv-Av8">
-                                <rect key="frame" x="0.0" y="44" width="414" height="676"/>
+                                <rect key="frame" x="0.0" y="78" width="414" height="642"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="IeZ-Uf-KWf">
@@ -199,15 +199,23 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Find..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ps7-gb-lPS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="X0H-nQ-CCx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="X0H-nQ-CCx" firstAttribute="bottom" secondItem="mhC-mF-2mh" secondAttribute="bottom" constant="28" id="3Xc-hF-zJF"/>
+                            <constraint firstItem="K5a-dv-Av8" firstAttribute="top" secondItem="ps7-gb-lPS" secondAttribute="bottom" id="B34-G9-90k"/>
                             <constraint firstItem="mhC-mF-2mh" firstAttribute="centerX" secondItem="ojH-FY-IBA" secondAttribute="centerX" id="Onh-ya-0gQ"/>
                             <constraint firstItem="mhC-mF-2mh" firstAttribute="top" secondItem="K5a-dv-Av8" secondAttribute="bottom" constant="35" id="QOD-CC-cpj"/>
+                            <constraint firstItem="ps7-gb-lPS" firstAttribute="top" secondItem="X0H-nQ-CCx" secondAttribute="top" id="VUY-sM-N6J"/>
+                            <constraint firstItem="X0H-nQ-CCx" firstAttribute="trailing" secondItem="ps7-gb-lPS" secondAttribute="trailing" id="ftl-M2-4Rd"/>
                             <constraint firstItem="K5a-dv-Av8" firstAttribute="trailing" secondItem="X0H-nQ-CCx" secondAttribute="trailing" id="gdk-mK-S2z"/>
-                            <constraint firstItem="K5a-dv-Av8" firstAttribute="top" secondItem="X0H-nQ-CCx" secondAttribute="top" id="pOG-bm-qlO"/>
+                            <constraint firstItem="ps7-gb-lPS" firstAttribute="leading" secondItem="X0H-nQ-CCx" secondAttribute="leading" id="xHL-jm-6yN"/>
                             <constraint firstItem="K5a-dv-Av8" firstAttribute="leading" secondItem="X0H-nQ-CCx" secondAttribute="leading" id="zWL-9Z-0WN"/>
                         </constraints>
                     </view>
@@ -215,12 +223,13 @@
                     <connections>
                         <outlet property="addButton" destination="wMq-j6-2b6" id="6Zu-QL-Rd9"/>
                         <outlet property="deleteButton" destination="xbb-vu-eh3" id="fUj-pT-lab"/>
+                        <outlet property="findTextField" destination="ps7-gb-lPS" id="u3g-Gv-rxp"/>
                         <outlet property="table" destination="K5a-dv-Av8" id="jkw-EE-46H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KvO-fD-LMV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="76"/>
+            <point key="canvasLocation" x="1053.6231884057972" y="75.669642857142847"/>
         </scene>
         <!--Item-->
         <scene sceneID="cwA-n2-SYQ">
