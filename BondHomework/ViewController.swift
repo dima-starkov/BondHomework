@@ -19,19 +19,25 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.reactive.text
-            .map { [unowned self] in
-                self.isCorrectedEmail(email: $0 ?? "f") ? " " : "Некорректтная почта"
-            }.bind(to: infoLabel)
-            
+//
+//        emailTextField.reactive.text
+//            .map { [unowned self] in
+//                self.isCorrectedEmail(email: $0 ?? " ") ? " " : "Некорректтная почта"
+//            }.bind(to: infoLabel)
+//
+//
+//        passwordTextField.reactive.text
+//            .map{ $0?.count ?? 0  > 6 ? " " : "Слишком короткий пароль"}
+//            .bind(to: infoLabel)
         
-        passwordTextField.reactive.text
-            .map{ $0?.count ?? 0  > 6 ? " " : "Слишком короткий пароль"}
-            .bind(to: infoLabel)
+        combineLatest(emailTextField.reactive.text, passwordTextField.reactive.text)
+            .map{ [unowned self] in
+                self.isCorrectedEmail(email: $0 ?? "") && $1?.count ?? 0 > 6 ? "" : "Некорректная почта или пароль"
+            }.bind(to: infoLabel)
            
         combineLatest(emailTextField.reactive.text, passwordTextField.reactive.text)
             .map{ [unowned self] in
-                self.isCorrectedEmail(email: $0 ?? "f") && $1?.count ?? 0 > 6
+                self.isCorrectedEmail(email: $0 ?? "") && $1?.count ?? 0 > 6
             }.bind(to: button.reactive.isEnabled)
            
     }

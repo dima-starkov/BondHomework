@@ -18,7 +18,7 @@ class ViewControllerCCC: UIViewController {
     @IBOutlet weak var findTextField: UITextField!
     
     let array = ["Дима","Антон","Виктор","Денис","Никита","Сергей","Михаил","Андрей"]
-    var tableArray = Property(["Fy"])
+    var tableArray = Property(["None"])
     var findArray = [String]()
     
     override func viewDidLoad() {
