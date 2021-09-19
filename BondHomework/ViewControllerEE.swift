@@ -29,8 +29,8 @@ class ViewControllerEE: UIViewController {
             .compactMap{ [unowned self] in self.isTapped2.value = true }
         
         combineLatest(isTapped1, isTapped2)
-            .map {$0 && $1 ? "Ракета Запущена" : ""}
-            .observeNext{[unowned self] in self.label.text = $0 }
+            .map {$0 && $1 ? "Ракета Запущена" : "ll"}
+            .observeNext{[unowned self] in self.label.reactive.text}
         
     }
     
