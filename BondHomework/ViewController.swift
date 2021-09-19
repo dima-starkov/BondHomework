@@ -32,8 +32,14 @@ class ViewController: UIViewController {
         
         combineLatest(emailTextField.reactive.text, passwordTextField.reactive.text)
             .map{ [unowned self] in
-                self.isCorrectedEmail(email: $0 ?? "") && $1?.count ?? 0 > 6 ? "" : "Некорректная почта или пароль"
-            }.bind(to: infoLabel)
+                if !self.isCorrectedEmail(email: $0 ?? "") {
+                    return "Некорректная почта"
+                } else if $1?.count ?? 0 < 6 {
+                    return "Некорректный пароль"
+                } else {
+                    return ""
+                }
+            }.bind(to: infoLabel.reactive.text)
            
         combineLatest(emailTextField.reactive.text, passwordTextField.reactive.text)
             .map{ [unowned self] in
