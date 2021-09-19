@@ -23,14 +23,14 @@ class ViewControllerEE: UIViewController {
         super.viewDidLoad()
         
         button1.reactive.tap
-            .compactMap{ [unowned self] in self.isTapped1.value = true }
+            .observeNext{ [unowned self] in self.isTapped1.value = true }
             
         button2.reactive.tap
-            .compactMap{ [unowned self] in self.isTapped2.value = true }
+            .observeNext{ [unowned self] in self.isTapped2.value = true }
         
         combineLatest(isTapped1, isTapped2)
-            .map {$0 && $1 ? "Ракета Запущена" : "ll"}
-            .observeNext{[unowned self] in self.label.reactive.text}
+            .map {$0 && $1 ? "Ракета Запущена" : ""}
+            .bind(to: self.label.reactive.text)
         
     }
     
