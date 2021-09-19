@@ -23,7 +23,7 @@ class ViewControllerDD: UIViewController {
             .bind(to: label.reactive.text)
         
         button.reactive.tap
-            .observeNext{ self.counter.value += 1 }
+            .observeNext{ [unowned self] in self.counter.value += 1 }
         
     }
     

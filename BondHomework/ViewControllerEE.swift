@@ -13,6 +13,7 @@ class ViewControllerEE: UIViewController {
 
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button1: UIButton!
+    
     @IBOutlet weak var label: UILabel!
     
      var isTapped1 = Property(false)
@@ -22,13 +23,14 @@ class ViewControllerEE: UIViewController {
         super.viewDidLoad()
         
         button1.reactive.tap
-            .compactMap{ self.isTapped1.value = true }
+            .compactMap{ [unowned self] in self.isTapped1.value = true }
+            
         button2.reactive.tap
-            .compactMap{ self.isTapped1.value = true }
+            .compactMap{ [unowned self] in self.isTapped2.value = true }
         
         combineLatest(isTapped1, isTapped2)
-            .map {$0 && $1 ? "Ракета Запущена" : " ggg"}
-            .bind(to: label)
+            .map {$0 && $1 ? "Ракета Запущена" : ""}
+            .observeNext{[unowned self] in self.label.text = $0 }
         
     }
     

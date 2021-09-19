@@ -22,10 +22,10 @@ class ViewControllerCCC: UIViewController {
         super.viewDidLoad()
         
         addButton.reactive.tap
-            .observeNext{ self.tableArray.value.append(self.array.randomElement()!)}
+            .observeNext{ [unowned self] in self.tableArray.value.append(self.array.randomElement()!)}
             
         deleteButton.reactive.tap
-            .observeNext{ self.tableArray.value.removeLast()}
+            .observeNext{[unowned self] in self.tableArray.value.removeLast()}
         
         tableArray.bind(to: table) { data, indexPaht, table in
             guard let cell = table.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell() }

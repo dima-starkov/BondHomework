@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.reactive.text
-            .map {
+            .map { [unowned self] in
                 self.isCorrectedEmail(email: $0 ?? "f") ? " " : "Некорректтная почта"
             }.bind(to: infoLabel)
             
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
             .bind(to: infoLabel)
            
         combineLatest(emailTextField.reactive.text, passwordTextField.reactive.text)
-            .map{
+            .map{ [unowned self] in
                 self.isCorrectedEmail(email: $0 ?? "f") && $1?.count ?? 0 > 6
             }.bind(to: button.reactive.isEnabled)
            
