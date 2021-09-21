@@ -25,7 +25,7 @@ class ViewControllerCCC: UIViewController {
         super.viewDidLoad()
         
         findTextField.reactive.text
-            .throttle(for: 2.0)
+            .debounce(for: 2.0)
             .compactMap{ [unowned self] text in
                 
                 for element in self.tableArray.value {
@@ -39,7 +39,7 @@ class ViewControllerCCC: UIViewController {
         
         
         addButton.reactive.tap
-            .observeNext{ [unowned self] in self.tableArray.value.append(self.array.randomElement()!)}
+            .observeNext{ [unowned self] in self.tableArray.value.insert(array.randomElement()!, at: 0)}
             
         deleteButton.reactive.tap
             .observeNext{[unowned self] in self.tableArray.value.removeLast()}
