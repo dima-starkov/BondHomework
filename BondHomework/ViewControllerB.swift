@@ -17,7 +17,7 @@ class ViewControllerB: UIViewController {
         super.viewDidLoad()
         
         textField.reactive.text
-            .delay(interval: 2.0)
+            .debounce(for: 2.0)
             .map {"отправка запроса для \($0 ?? "")"}
             .observeNext{ print($0)}
 
