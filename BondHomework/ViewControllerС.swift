@@ -26,7 +26,7 @@ class ViewControllerCCC: UIViewController {
         
         findTextField.reactive.text
             .debounce(for: 2.0)
-            .compactMap{ [unowned self] text in
+            .observeNext{ [unowned self] text in
                 
                 for element in self.tableArray.value {
                     if element == text {
