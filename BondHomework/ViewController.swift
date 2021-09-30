@@ -43,7 +43,7 @@ class ViewController: UIViewController {
            
         combineLatest(emailTextField.reactive.text, passwordTextField.reactive.text)
             .map{ [unowned self] in
-                self.isCorrectedEmail(email: $0 ?? "") && $1?.count ?? 0 > 6
+                self.isCorrectedEmail(email: $0 ?? "") && $1?.count ?? 0 >= 6
             }.bind(to: button.reactive.isEnabled)
            
     }

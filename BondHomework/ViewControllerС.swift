@@ -30,6 +30,7 @@ class ViewControllerCCC: UIViewController {
             .observeNext{ [unowned self] text in
                 guard let text = text else { return }
                 if text != "" {
+                    self.findArray.removeAll()
                 for element in self.tableArray.value {
                     if element.hasPrefix(text) {
                         self.findArray.append(element)
