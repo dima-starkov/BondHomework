@@ -54,6 +54,7 @@ class ViewController: UIViewController {
         let emailRegex = firstpart + "@" + serverpart + "[A-Za-z]{2,8}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: email)
+        
     }
 
 
